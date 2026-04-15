@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TuftCafe</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/rug-1.webp">
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
+
+</head>
+
+<body>
+
+<!-- FLOATING INSTAGRAM -->
+<a href="https://instagram.com/tuftcafe" target="_blank" class="floating-insta">
+<i class="fa-brands fa-instagram"></i>
+</a>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/916377308219" target="_blank" class="floating-whatsapp">
+<i class="fa-brands fa-whatsapp"></i>
+</a>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<div class="logo">
+<a href="index.html"><img src="assets/logo.webp" alt="TuftCafe Logo"></a>
+</div>
+
+<nav>
+
+<a href="index.html" class="nav-link">Home</a>
+<a href="floor.html" class="nav-link">Floor Rugs</a>
+<a href="table.html" class="nav-link">Table Top Rugs</a>
+<a href="coaster.html" class="nav-link">Coasters</a>
+<a href="custom.html" class="nav-link">Custom Rugs</a>
+<a href="care.html" class="nav-link">Care Instructions</a>
+<a href="#reviews" class="nav-link">Reviews</a>
+
+</nav>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="heroSection">
+
+  <!-- Background slides -->
+  <div class="hero-slide active" style="background-image:url('assets/rug-1.webp')"></div>
+  <div class="hero-slide" style="background-image:url('assets/rug-2.webp')"></div>
+  <div class="hero-slide" style="background-image:url('assets/rug-3.webp')"></div>
+  <div class="hero-slide" style="background-image:url('assets/cat-1.webp')"></div>
+  <div class="hero-slide" style="background-image:url('assets/rug-5.webp')"></div>
+  <div class="hero-slide" style="background-image:url('assets/rug-6.webp')"></div>
+  <div class="hero-slide" style="background-image:url('assets/table-1.webp')"></div>
+
+  <!-- Overlay -->
+  <div class="hero-overlay"></div>
+
+  <!-- Text -->
+  <div class="hero-content">
+    <h1>Premium Handmade Rugs</h1>
+    <p>Elevate your space with luxury tufted rugs.</p>
+    <button class="shop-btn"
+      onclick="document.getElementById('bestGrid').scrollIntoView({behavior:'smooth'})">
+      Shop Now
+    </button>
+  </div>
+
+  <!-- Dot indicators -->
+  <div class="hero-dots" id="heroDots"></div>
+
+</section>
+
+
+<!-- ================= SALE ================= -->
+
+<section class="home-section">
+
+<h2 class="section-title">🔥 Stock Clearance Sale 🔥</h2>
+
+<div id="saleGrid" class="home-grid"></div>
+
+<div class="view-all">
+<a href="sale.html" class="view-btn">View All</a>
+</div>
+
+</section>
+
+
+<!-- ================= BEST SELLERS ================= -->
+
+<section class="home-section">
+
+<h2 class="section-title">⭐ Latest Drops ⭐</h2>
+
+<div id="bestGrid" class="home-grid"></div>
+
+<div class="view-all">
+<a href="bestsellers.html" class="view-btn">View All</a>
+</div>
+
+</section>
+
+
+<!-- ================ CUSTOM DEMANDS ================= -->
+
+<section class="home-section">
+
+<h2 class="section-title">✨ Custom Demands ✨</h2>
+
+<div id="customGrid" class="custom-home-grid"></div>
+
+<div class="view-all">
+<a href="custom.html" class="view-btn">View All</a>
+</div>
+
+</section>
+
+<!-- ================= REVIEWS ================= -->
+
+<section class="reviews-section" id="reviews">
+
+<h2 class="section-title">Customer Reviews</h2>
+
+<div class="reviews-grid-layout">
+
+  <!-- REVIEW 1 -->
+  <div class="review-card">
+    <img src="assets/reviews/review1.webp" alt="Review">
+    <div class="review-content">
+      <p class="review-text">Get your customised door mat, coaster and wall hanging from TuftCafe. I got mine and loved all three ❤️ !</p>
+      <div class="review-user">
+        <div class="user-avatar">A</div>
+        <div><strong>Anushka</strong><span class="location">Jaipur, Rajasthan</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVIEW 2 -->
+  <div class="review-card">
+    <video autoplay muted loop playsinline preload="auto" style="width:100%;height:260px;object-fit:cover;display:block;">
+      <source src="assets/reviews/review2.mp4" type="video/mp4">
+    </video>
+    <div class="review-content">
+      <p class="review-text">It is faboulous 🤩, much much better than expected!</p>
+      <div class="review-user">
+        <div class="user-avatar">M</div>
+        <div><strong>Mudit</strong><span class="location">Surat, Gujarat</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVIEW 3 -->
+  <div class="review-card">
+    <img src="assets/reviews/review3.webp" alt="Review">
+    <div class="review-content">
+      <p class="review-text">Such a lovely rug. Really happy with the craftsmanship.</p>
+      <div class="review-user">
+        <div class="user-avatar">I</div>
+        <div><strong>Ishika</strong><span class="location">Jaipur, Rajasthan</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVIEW 4 -->
+  <div class="review-card">
+    <img src="assets/reviews/review4.webp" alt="Review">
+    <div class="review-content">
+      <p class="review-text">Beautiful handmade rug! The detailing is incredible.</p>
+      <div class="review-user">
+        <div class="user-avatar">S</div>
+        <div><strong>Saniya</strong><span class="location">Jaipur, Rajasthan</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVIEW 5 -->
+  <div class="review-card">
+    <img src="assets/reviews/review5.webp" alt="Review">
+    <div class="review-content">
+      <p class="review-text">got what I have been expecting! And logo detailing was too good.👍</p>
+      <div class="review-user">
+        <div class="user-avatar">D</div>
+        <div><strong>Dhruv</strong><span class="location">Gujarat</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVIEW 6 -->
+  <div class="review-card">
+    <img src="assets/reviews/review6.webp" alt="Review">
+    <div class="review-content">
+      <p class="review-text">Absolutely love it! The quality is top notch.</p>
+      <div class="review-user">
+        <div class="user-avatar">A</div>
+        <div><strong>Alka</strong><span class="location">Delhi, India</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVIEW 7 -->
+  <div class="review-card">
+    <img src="assets/reviews/review7.webp" alt="Review">
+    <div class="review-content">
+      <p class="review-text">Loved the Rug... MY mother also loved it ❤️.</p>
+      <div class="review-user">
+        <div class="user-avatar">N</div>
+        <div><strong>Naman</strong><span class="location">Faridabad, Haryana</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVIEW 8 -->
+  <div class="review-card">
+    <img src="assets/reviews/review8.webp" alt="Review">
+    <div class="review-content">
+      <p class="review-text">It is the sweetest gift I've ever received!🔥</p>
+      <div class="review-user">
+        <div class="user-avatar">S</div>
+        <div><strong>Sanchita</strong><span class="location">Gurgaon, Haryana</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVIEW 9 -->
+  <div class="review-card">
+    <img src="assets/reviews/review9.webp" alt="Review">
+    <div class="review-content">
+      <p class="review-text">Loved it!🥰</p>
+      <div class="review-user">
+        <div class="user-avatar">A</div>
+        <div><strong>Aarohi</strong><span class="location">Jaipur, Rajasthan</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVIEW 10 -->
+  <div class="review-card">
+    <video autoplay muted loop playsinline preload="auto" style="width:100%;height:260px;object-fit:cover;display:block;">
+      <source src="assets/reviews/review10.mp4" type="video/mp4">
+    </video>
+    <div class="review-content">
+      <p class="review-text">I'm obssessed with your work🤩!</p>
+      <div class="review-user">
+        <div class="user-avatar">A</div>
+        <div><strong>Atithi</strong><span class="location">Lucknow, Uttar Pradesh</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVIEW 11 -->
+  <div class="review-card">
+    <video autoplay muted loop playsinline preload="auto" style="width:100%;height:260px;object-fit:cover;display:block;">
+      <source src="assets/reviews/review11.mp4" type="video/mp4">
+    </video>
+    <div class="review-content">
+      <p class="review-text">Loved it! Thank you so much! 🥰</p>
+      <div class="review-user">
+        <div class="user-avatar">P</div>
+        <div><strong>Pooja</strong><span class="location">Delhi, India</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+<div class="footer-container">
+
+  <div class="footer-column">
+    <h3>Helpful Links</h3>
+    <a href="about.html">About Us</a>
+    <a href="care.html">Care Instructions</a>
+    <a href="faq.html">FAQs</a>
+  </div>
+
+  <div class="footer-column footer-policy-col">
+    <h3>Policy</h3>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="return.html">Return &amp; Refund Policy</a>
+    <a href="shipping.html">Shipping Policy</a>
+  </div>
+
+  <div class="footer-column footer-contact-col">
+    <h3>Contact Us</h3>
+    <div class="footer-contact-item">
+      <i class="fa-solid fa-envelope"></i>
+      <a href="mailto:tuftcafe@gmail.com">tuftcafe@gmail.com</a>
+    </div>
+    <div class="footer-contact-item">
+      <i class="fa-solid fa-phone"></i>
+      <a href="tel:+916377308219">+91 63773 08219</a>
+    </div>
+    <div class="footer-contact-item">
+      <i class="fa-brands fa-whatsapp"></i>
+      <a href="https://wa.me/916377308219" target="_blank">WhatsApp Us</a>
+    </div>
+    <div class="footer-contact-item">
+      <i class="fa-brands fa-instagram"></i>
+      <a href="https://instagram.com/tuftcafe" target="_blank">@tuftcafe</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- Social icons centered below all columns -->
+<div class="footer-social-row">
+  <h3>Follow Us</h3>
+  <div class="footer-social-icons">
+    <a href="https://www.instagram.com/direct/t/17843814135402203/" target="_blank" class="footer-icon">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+    <a href="https://in.pinterest.com/tuftcafe/?invite_code=0c811df014434730be72bc8b858566b1&sender=1095148971795711996" target="_blank" class="footer-icon">
+      <i class="fa-brands fa-pinterest-p"></i>
+    </a>
+    <a href="mailto:tuftcafe@gmail.com" class="footer-icon">
+      <i class="fa-solid fa-envelope"></i>
+    </a>
+  </div>
+</div>
+
+<div class="footer-bottom">
+  &copy; 2026 TuftCafe. All rights reserved.
+</div>
+
+</footer>
+
+
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightboxOverlay">
+  <button class="lightbox-close" onclick="closeLightbox()">&#x2715;</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  <div class="lightbox-arrows">
+    <button class="lightbox-arrow" onclick="lightboxPrev()">&#8592;</button>
+    <button class="lightbox-arrow" onclick="lightboxNext()">&#8594;</button>
+  </div>
+  <div class="lightbox-dots" id="lightboxDots"></div>
+</div>
+
+<script src="js/products.js" defer></script>
+<script src="js/index.js" defer></script>
+
+</body>
+</html>

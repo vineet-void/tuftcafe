@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TuftCafe</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
+</head>
+
+<body>
+
+<!-- FLOATING INSTAGRAM -->
+<a href="https://instagram.com/tuftcafe" target="_blank" class="floating-insta">
+  <i class="fa-brands fa-instagram"></i>
+</a>
+
+<!--  FLOATING WHATSAPP -->
+<a href="https://wa.me/916377308219" 
+   target="_blank" 
+   class="floating-whatsapp">
+   <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+  <div class="logo">
+    <a href="index.html"><img src="assets/logo.webp" alt="TuftCafe Logo"></a>
+  </div>
+
+  <nav>
+    <a href="index.html" class="nav-link">Home</a>
+
+    <!-- SHOP (now normal link) -->
+    <a href="floor.html" class="nav-link">Floor Rugs</a>
+    <a href="table.html" class="nav-link">Table Top Rugs</a>
+    <a href="coaster.html" class="nav-link">Coasters</a>
+    <a href="custom.html" class="nav-link">Custom Rugs</a>
+    <a href="care.html" class="nav-link">Care Instructions</a>
+    <a href="index.html#reviews" class="nav-link">Reviews</a>
+    
+  </nav>
+</header>
+
+<!-- PRODUCT -->
+<section class="product-page">
+
+<div class="product-container">
+
+  <!-- LEFT -->
+  <div class="product-gallery">
+
+    <div class="image-wrapper">
+      <span class="arrow left" onclick="prevImage()">❮</span>
+
+      <img id="mainImage" class="main-img">
+
+      <span class="arrow right" onclick="nextImage()">❯</span>
+    </div>
+
+    <div id="thumbs" class="thumbs"></div>
+
+  </div>
+
+  <!-- RIGHT -->
+<div class="product-info">
+
+  <p class="brand-label">TUFTCAFE</p>
+
+  <h1 id="product-title"></h1>
+
+  <p id="product-price" class="product-price"></p>
+
+  <p id="product-description" class="product-description"></p>
+
+  <h3 class="section-heading">Available Sizes</h3>
+  <div id="product-sizes" class="sizes"></div>
+
+  <div class="delivery-box">
+    <i class="fa-solid fa-truck"></i>
+    <div>
+      <strong>Delivery Time (3–5 Weeks)</strong>
+      <p>Shipping Charges Additional</p>
+    </div>
+  </div>
+
+  <!-- TIME ORDER -->
+
+<div class="delivery-timeline">
+
+  <div class="timeline-step">
+    <div class="circle"><i class="fa-solid fa-bag-shopping"></i></div>
+    <h4>Ordered</h4>
+    <p id="orderedDate"></p>
+  </div>
+
+  <div class="line"></div>
+
+  <div class="timeline-step">
+    <div class="circle"><i class="fa-solid fa-truck"></i></div>
+    <h4>In Production</h4>
+    <p id="productionDate"></p>
+  </div>
+
+  <div class="line"></div>
+
+  <div class="timeline-step">
+    <div class="circle"><i class="fa-solid fa-location-dot"></i></div>
+    <h4>At your Doorstep</h4>
+    <p id="deliveryDate"></p>
+  </div>
+
+</div>
+
+  <!-- ORDER BUTTONS -->
+  <div class="order-buttons">
+
+    <a id="whatsappOrder"
+       class="whatsapp-btn"
+       target="_blank">
+       <i class="fa-brands fa-whatsapp"></i>
+       Order on WhatsApp
+    </a>
+
+    <a id="instaOrder"
+       href="https://instagram.com/tuftcafe"
+       target="_blank"
+       class="insta-btn">
+       <i class="fa-brands fa-instagram"></i>
+       Order on Instagram
+    </a>
+
+  </div>
+
+  <h3 class="section-heading">Product Details</h3>
+  <ul id="product-details"></ul>
+
+  <!-- ACCORDION -->
+  <div class="accordion">
+
+    <div class="accordion-item">
+      <div class="accordion-title">
+        Description
+        <span class="accordion-icon">&#8964;</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-body-inner">
+          <div id="descContent"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-title">
+        Return &amp; Refund
+        <span class="accordion-icon">&#8964;</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-body-inner">
+          <div id="refundContent"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-title">
+        Care Instructions
+        <span class="accordion-icon">&#8964;</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-body-inner">
+          <div id="careContent"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+   
+
+</div>
+
+</section>
+
+<section class="related-section">
+  <h2>You may also like</h2>
+
+  <div id="relatedProducts" class="related-grid"></div>
+</section>
+
+<footer class="footer">
+
+<div class="footer-container">
+
+  <div class="footer-column">
+    <h3>Helpful Links</h3>
+    <a href="about.html">About Us</a>
+    <a href="care.html">Care Instructions</a>
+    <a href="faq.html">FAQs</a>
+  </div>
+
+  <div class="footer-column footer-policy-col">
+    <h3>Policy</h3>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="return.html">Return &amp; Refund Policy</a>
+    <a href="shipping.html">Shipping Policy</a>
+  </div>
+
+  <div class="footer-column footer-contact-col">
+    <h3>Contact Us</h3>
+    <div class="footer-contact-item">
+      <i class="fa-solid fa-envelope"></i>
+      <a href="mailto:tuftcafe@gmail.com">tuftcafe@gmail.com</a>
+    </div>
+    <div class="footer-contact-item">
+      <i class="fa-solid fa-phone"></i>
+      <a href="tel:+916377308219">+91 63773 08219</a>
+    </div>
+    <div class="footer-contact-item">
+      <i class="fa-brands fa-whatsapp"></i>
+      <a href="https://wa.me/916377308219" target="_blank">WhatsApp Us</a>
+    </div>
+    <div class="footer-contact-item">
+      <i class="fa-brands fa-instagram"></i>
+      <a href="https://instagram.com/tuftcafe" target="_blank">@tuftcafe</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- Social icons centered below all columns -->
+<div class="footer-social-row">
+  <h3>Follow Us</h3>
+  <div class="footer-social-icons">
+    <a href="https://instagram.com/tuftcafe" target="_blank" class="footer-icon">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+    <a href="https://pinterest.com/tuftcafe" target="_blank" class="footer-icon">
+      <i class="fa-brands fa-pinterest-p"></i>
+    </a>
+    <a href="mailto:tuftcafe@gmail.com" class="footer-icon">
+      <i class="fa-solid fa-envelope"></i>
+    </a>
+  </div>
+</div>
+
+<div class="footer-bottom">
+  &copy; 2026 TuftCafe. All rights reserved.
+</div>
+
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightboxOverlay">
+  <button class="lightbox-close" onclick="closeLightbox()">&#x2715;</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  <div class="lightbox-arrows">
+    <button class="lightbox-arrow" onclick="lightboxPrev()">&#8592;</button>
+    <button class="lightbox-arrow" onclick="lightboxNext()">&#8594;</button>
+  </div>
+  <div class="lightbox-dots" id="lightboxDots"></div>
+</div>
+
+<!-- IMPORTANT: SCRIPTS AT BOTTOM -->
+<script src="js/products.js" defer></script>
+<script src="js/product.js" defer></script>
+
+</body>
+</html>

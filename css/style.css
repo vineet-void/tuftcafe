@@ -227,6 +227,13 @@ nav{
 
 .product-gallery{
   flex:1;
+  position: static;
+}
+
+@media (max-width: 768px) {
+  .product-container {
+    flex-direction: column;
+  }
 }
 
 .main-img{
@@ -805,6 +812,12 @@ nav{
 .product-gallery {
   position: sticky;
   top: 120px;
+}
+
+@media (max-width: 768px) {
+  .product-gallery {
+    position: static;
+  }
 }
 
 .main-img {
@@ -2401,4 +2414,24 @@ nav{
 /* Custom rugs cards clickable */
 .home-card{
   cursor:pointer;
+}
+
+@media (max-width: 768px) {
+  .product-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.product-details {
+  padding: 16px;
+}
+
+.product-gallery {
+  width: 100%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }

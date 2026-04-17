@@ -123,7 +123,7 @@
 <div id="customGrid" class="custom-home-grid"></div>
 
 <div class="view-all">
-<a href="custom.html" class="view-btn">View All</a>
+<a href="customproducts.html" class="view-btn">View All</a>
 </div>
 
 </section>
@@ -137,7 +137,7 @@
 <div class="reviews-grid-layout">
 
   <!-- REVIEW 1 -->
-  <div class="review-card">
+  <div class="review-card" onclick="openReviewLightbox(0)">
     <img src="assets/reviews/review1.webp" alt="Review">
     <div class="review-content">
       <p class="review-text">Get your customised door mat, coaster and wall hanging from TuftCafe. I got mine and loved all three ❤️ !</p>
@@ -149,7 +149,7 @@
   </div>
 
   <!-- REVIEW 2 -->
-  <div class="review-card">
+  <div class="review-card" onclick="openReviewLightbox(1)">
     <video autoplay muted loop playsinline preload="auto" style="width:100%;height:260px;object-fit:cover;display:block;">
       <source src="assets/reviews/review2.mp4" type="video/mp4">
     </video>
@@ -163,7 +163,7 @@
   </div>
 
   <!-- REVIEW 3 -->
-  <div class="review-card">
+  <div class="review-card" onclick="openReviewLightbox(2)">
     <img src="assets/reviews/review3.webp" alt="Review">
     <div class="review-content">
       <p class="review-text">Such a lovely rug. Really happy with the craftsmanship.</p>
@@ -175,7 +175,7 @@
   </div>
 
   <!-- REVIEW 4 -->
-  <div class="review-card">
+  <div class="review-card" onclick="openReviewLightbox(3)">
     <img src="assets/reviews/review4.webp" alt="Review">
     <div class="review-content">
       <p class="review-text">Beautiful handmade rug! The detailing is incredible.</p>
@@ -187,7 +187,7 @@
   </div>
 
   <!-- REVIEW 5 -->
-  <div class="review-card">
+  <div class="review-card" onclick="openReviewLightbox(4)">
     <img src="assets/reviews/review5.webp" alt="Review">
     <div class="review-content">
       <p class="review-text">got what I have been expecting! And logo detailing was too good.👍</p>
@@ -199,7 +199,7 @@
   </div>
 
   <!-- REVIEW 6 -->
-  <div class="review-card">
+  <div class="review-card" onclick="openReviewLightbox(5)">
     <img src="assets/reviews/review6.webp" alt="Review">
     <div class="review-content">
       <p class="review-text">Absolutely love it! The quality is top notch.</p>
@@ -211,7 +211,7 @@
   </div>
 
   <!-- REVIEW 7 -->
-  <div class="review-card">
+  <div class="review-card" onclick="openReviewLightbox(6)">
     <img src="assets/reviews/review7.webp" alt="Review">
     <div class="review-content">
       <p class="review-text">Loved the Rug... MY mother also loved it ❤️.</p>
@@ -223,7 +223,7 @@
   </div>
 
   <!-- REVIEW 8 -->
-  <div class="review-card">
+  <div class="review-card" onclick="openReviewLightbox(7)">
     <img src="assets/reviews/review8.webp" alt="Review">
     <div class="review-content">
       <p class="review-text">It is the sweetest gift I've ever received!🔥</p>
@@ -235,7 +235,7 @@
   </div>
 
   <!-- REVIEW 9 -->
-  <div class="review-card">
+  <div class="review-card" onclick="openReviewLightbox(8)">
     <img src="assets/reviews/review9.webp" alt="Review">
     <div class="review-content">
       <p class="review-text">Loved it!🥰</p>
@@ -247,7 +247,7 @@
   </div>
 
   <!-- REVIEW 10 -->
-  <div class="review-card">
+  <div class="review-card" onclick="openReviewLightbox(9)">
     <video autoplay muted loop playsinline preload="auto" style="width:100%;height:260px;object-fit:cover;display:block;">
       <source src="assets/reviews/review10.mp4" type="video/mp4">
     </video>
@@ -261,7 +261,7 @@
   </div>
 
   <!-- REVIEW 11 -->
-  <div class="review-card">
+  <div class="review-card" onclick="openReviewLightbox(10)">
     <video autoplay muted loop playsinline preload="auto" style="width:100%;height:260px;object-fit:cover;display:block;">
       <source src="assets/reviews/review11.mp4" type="video/mp4">
     </video>
@@ -355,8 +355,83 @@
   <div class="lightbox-dots" id="lightboxDots"></div>
 </div>
 
+<!-- REVIEW LIGHTBOX -->
+<div class="review-lightbox-overlay" id="reviewLightboxOverlay">
+  <button class="review-lb-close" id="reviewLbClose">&#x2715;</button>
+  <div class="review-lb-inner" id="reviewLbInner">
+    <!-- dynamically filled -->
+  </div>
+  <button class="review-lb-arrow review-lb-prev" id="reviewLbPrev">&#8592;</button>
+  <button class="review-lb-arrow review-lb-next" id="reviewLbNext">&#8594;</button>
+</div>
+
 <script src="js/products.js" defer></script>
 <script src="js/index.js" defer></script>
+<script>
+// REVIEW LIGHTBOX DATA
+const REVIEWS = [
+  { type:'image', src:'assets/reviews/review1.webp', name:'Anushka', location:'Jaipur, Rajasthan', text:'Get your customised door mat, coaster and wall hanging from TuftCafe. I got mine and loved all three ❤️ !' },
+  { type:'video', src:'assets/reviews/review2.mp4', name:'Mudit', location:'Surat, Gujarat', text:'It is faboulous 🤩, much much better than expected!' },
+  { type:'image', src:'assets/reviews/review3.webp', name:'Ishika', location:'Jaipur, Rajasthan', text:'Such a lovely rug. Really happy with the craftsmanship.' },
+  { type:'image', src:'assets/reviews/review4.webp', name:'Saniya', location:'Jaipur, Rajasthan', text:'Beautiful handmade rug! The detailing is incredible.' },
+  { type:'image', src:'assets/reviews/review5.webp', name:'Dhruv', location:'Gujarat', text:'got what I have been expecting! And logo detailing was too good.👍' },
+  { type:'image', src:'assets/reviews/review6.webp', name:'Alka', location:'Delhi, India', text:'Absolutely love it! The quality is top notch.' },
+  { type:'image', src:'assets/reviews/review7.webp', name:'Naman', location:'Faridabad, Haryana', text:'Loved the Rug... MY mother also loved it ❤️.' },
+  { type:'image', src:'assets/reviews/review8.webp', name:'Sanchita', location:'Gurgaon, Haryana', text:'It is the sweetest gift I\'ve ever received!🔥' },
+  { type:'image', src:'assets/reviews/review9.webp', name:'Aarohi', location:'Jaipur, Rajasthan', text:'Loved it!🥰' },
+  { type:'video', src:'assets/reviews/review10.mp4', name:'Atithi', location:'Lucknow, Uttar Pradesh', text:'I\'m obssessed with your work🤩!' },
+  { type:'video', src:'assets/reviews/review11.mp4', name:'Pooja', location:'Delhi, India', text:'Loved it! Thank you so much! 🥰' },
+];
 
+let _rvIdx = 0;
+
+function openReviewLightbox(index) {
+  _rvIdx = index;
+  renderReviewLb();
+  document.getElementById('reviewLightboxOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function renderReviewLb() {
+  const r = REVIEWS[_rvIdx];
+  const inner = document.getElementById('reviewLbInner');
+  const initials = r.name.charAt(0).toUpperCase();
+  const mediaHTML = r.type === 'video'
+    ? `<video autoplay muted loop playsinline class="rlb-media"><source src="${r.src}" type="video/mp4"></video>`
+    : `<img src="${r.src}" alt="${r.name}" class="rlb-media">`;
+  inner.innerHTML = `
+    <div class="rlb-media-wrap">${mediaHTML}</div>
+    <div class="rlb-info">
+      <div class="rlb-user">
+        <div class="rlb-avatar">${initials}</div>
+        <div>
+          <strong class="rlb-name">${r.name}</strong>
+          <span class="rlb-loc">📍 ${r.location}</span>
+        </div>
+      </div>
+      <p class="rlb-text">${r.text}</p>
+    </div>
+  `;
+}
+
+function closeReviewLb() {
+  document.getElementById('reviewLightboxOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('reviewLbClose').onclick = closeReviewLb;
+  document.getElementById('reviewLbPrev').onclick = () => { _rvIdx = (_rvIdx - 1 + REVIEWS.length) % REVIEWS.length; renderReviewLb(); };
+  document.getElementById('reviewLbNext').onclick = () => { _rvIdx = (_rvIdx + 1) % REVIEWS.length; renderReviewLb(); };
+  document.getElementById('reviewLightboxOverlay').addEventListener('click', (e) => { if(e.target.id === 'reviewLightboxOverlay') closeReviewLb(); });
+  document.addEventListener('keydown', (e) => {
+    const ov = document.getElementById('reviewLightboxOverlay');
+    if (!ov.classList.contains('open')) return;
+    if (e.key === 'ArrowRight') { _rvIdx = (_rvIdx+1)%REVIEWS.length; renderReviewLb(); }
+    if (e.key === 'ArrowLeft') { _rvIdx = (_rvIdx-1+REVIEWS.length)%REVIEWS.length; renderReviewLb(); }
+    if (e.key === 'Escape') closeReviewLb();
+  });
+});
+</script>
 </body>
 </html>

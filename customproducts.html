@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custom Products - TuftCafe</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
+
+<style>
+  .cp-hero {
+    background: linear-gradient(135deg, #ff66b2 0%, #66ccff 100%);
+    padding: 80px 6% 60px;
+    text-align: center;
+    color: #fff;
+  }
+  .cp-hero h1 {
+    font-size: 46px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+  }
+  .cp-hero p {
+    font-size: 18px;
+    opacity: 0.92;
+    max-width: 540px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+  }
+  .cp-hero .cta-btn {
+    display: inline-block;
+    background: #fff;
+    color: #ff66b2;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 14px 36px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: transform .2s, box-shadow .2s;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+  }
+  .cp-hero .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+  }
+
+  .cp-section {
+    padding: 70px 6%;
+    background: #f9f9f9;
+  }
+  .cp-section .section-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 48px;
+  }
+
+  .cp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .cp-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.07);
+    cursor: pointer;
+    transition: transform .25s, box-shadow .25s;
+    position: relative;
+  }
+  .cp-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 48px rgba(0,0,0,0.13);
+  }
+
+  .cp-card-img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+    transition: transform .35s;
+  }
+  .cp-card:hover .cp-card-img {
+    transform: scale(1.04);
+  }
+  .cp-card-img-wrap {
+    overflow: hidden;
+  }
+
+  .cp-card-body {
+    padding: 18px 20px 22px;
+    background: #000;
+    color: #fff;
+  }
+  .cp-card-body h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .cp-card-body p {
+    font-size: 13px;
+    color: #bbb;
+    line-height: 1.5;
+  }
+
+  .cp-card-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: #ff66b2;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  /* Thumbnail strip in card */
+  .cp-thumb-strip {
+    display: flex;
+    gap: 6px;
+    padding: 10px 12px;
+    background: #111;
+  }
+  .cp-thumb {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color .2s;
+  }
+  .cp-thumb.active, .cp-thumb:hover {
+    border-color: #ff66b2;
+  }
+
+  /* LIGHTBOX */
+  .cp-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.94);
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+  }
+  .cp-lightbox.open { display: flex; }
+
+  .cp-lb-close {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    color: #fff;
+    font-size: 26px;
+    cursor: pointer;
+    background: rgba(255,255,255,0.15);
+    border: none;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: background .2s;
+  }
+  .cp-lb-close:hover { background: rgba(255,255,255,0.3); }
+
+  .cp-lb-inner {
+    display: flex;
+    flex-direction: row;
+    background: #111;
+    border-radius: 20px;
+    overflow: hidden;
+    max-width: 900px;
+    width: 92vw;
+    max-height: 90vh;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.7);
+  }
+
+  .cp-lb-media-wrap {
+    flex: 0 0 58%;
+    max-width: 58%;
+    background: #000;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cp-lb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    max-height: 90vh;
+    display: block;
+  }
+
+  .cp-lb-info {
+    flex: 1;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 22px;
+    overflow-y: auto;
+  }
+  .cp-lb-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+  }
+  .cp-lb-desc {
+    font-size: 14px;
+    color: #bbb;
+    line-height: 1.75;
+  }
+  .cp-lb-badge {
+    display: inline-block;
+    background: #ff66b2;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    width: fit-content;
+  }
+  .cp-lb-thumbs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .cp-lb-thumb {
+    width: 52px;
+    height: 52px;
+    border-radius: 8px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color .2s, transform .2s;
+  }
+  .cp-lb-thumb.active, .cp-lb-thumb:hover {
+    border-color: #ff66b2;
+    transform: scale(1.06);
+  }
+  .cp-lb-cta {
+    display: inline-block;
+    background: #25d366;
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 13px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    text-align: center;
+    transition: background .2s, transform .2s;
+  }
+  .cp-lb-cta:hover {
+    background: #1ebe5d;
+    transform: translateY(-2px);
+  }
+  .cp-lb-cta i { margin-right: 8px; }
+
+  .cp-lb-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background .2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+  }
+  .cp-lb-arrow:hover { background: rgba(255,255,255,0.3); }
+  .cp-lb-prev { left: 14px; }
+  .cp-lb-next { right: 14px; }
+
+  /* image counter */
+  .cp-lb-counter {
+    font-size: 13px;
+    color: #888;
+    text-align: center;
+    margin-top: -10px;
+  }
+
+  /* CTA bottom strip */
+  .cp-bottom-cta {
+    background: linear-gradient(135deg, #ff66b2, #ff99cc);
+    padding: 70px 6%;
+    text-align: center;
+    color: #fff;
+  }
+  .cp-bottom-cta h2 {
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .cp-bottom-cta p {
+    font-size: 16px;
+    opacity: 0.9;
+    margin-bottom: 30px;
+  }
+  .cp-bottom-cta a {
+    display: inline-block;
+    background: #fff;
+    color: #ff66b2;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 14px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: transform .2s, box-shadow .2s;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+  }
+  .cp-bottom-cta a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+  }
+
+  @media (max-width: 900px) {
+    .cp-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  }
+  @media (max-width: 580px) {
+    .cp-grid { grid-template-columns: 1fr; }
+    .cp-hero h1 { font-size: 32px; }
+    .cp-lb-inner { flex-direction: column; }
+    .cp-lb-media-wrap { flex: 0 0 260px; max-width: 100%; }
+    .cp-lb-info { padding: 22px 18px; }
+    .cp-lb-prev { left: 6px; }
+    .cp-lb-next { right: 6px; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- FLOATING INSTAGRAM -->
+<a href="https://instagram.com/tuftcafe" target="_blank" class="floating-insta">
+<i class="fa-brands fa-instagram"></i>
+</a>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/916377308219" target="_blank" class="floating-whatsapp">
+<i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="logo">
+    <a href="index.html"><img src="assets/logo.webp" alt="TuftCafe Logo"></a>
+  </div>
+  <nav>
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="floor.html" class="nav-link">Floor Rugs</a>
+    <a href="table.html" class="nav-link">Table Top Rugs</a>
+    <a href="coaster.html" class="nav-link">Coasters</a>
+    <a href="custom.html" class="nav-link">Custom Rugs</a>
+    <a href="care.html" class="nav-link">Care Instructions</a>
+    <a href="index.html#reviews" class="nav-link">Reviews</a>
+  </nav>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="cp-hero">
+  <h1>✨ Custom Demands ✨</h1>
+  <p>Every rug here was born from a customer's unique idea. Your imagination is our canvas — let's make yours next.</p>
+  <a href="https://wa.me/916377308219" class="cta-btn">
+    <i class="fa-brands fa-whatsapp"></i> &nbsp;Order Your Custom Rug
+  </a>
+</section>
+
+<!-- ================= PRODUCTS GRID ================= -->
+<section class="cp-section">
+  <h2 class="section-title">All Custom Products</h2>
+  <div class="cp-grid" id="cpGrid"></div>
+</section>
+
+<!-- ================= BOTTOM CTA ================= -->
+<section class="cp-bottom-cta">
+  <h2>Have a Design in Mind?</h2>
+  <p>Share your idea and we'll craft a one-of-a-kind rug just for you.</p>
+  <a href="custom.html">See How It Works →</a>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+<div class="footer-container">
+  <div class="footer-column">
+    <h3>Helpful Links</h3>
+    <a href="about.html">About Us</a>
+    <a href="care.html">Care Instructions</a>
+    <a href="faq.html">FAQs</a>
+  </div>
+  <div class="footer-column footer-policy-col">
+    <h3>Policy</h3>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="return.html">Return &amp; Refund Policy</a>
+    <a href="shipping.html">Shipping Policy</a>
+  </div>
+  <div class="footer-column footer-contact-col">
+    <h3>Contact Us</h3>
+    <div class="footer-contact-item">
+      <i class="fa-solid fa-envelope"></i>
+      <a href="mailto:tuftcafe@gmail.com">tuftcafe@gmail.com</a>
+    </div>
+    <div class="footer-contact-item">
+      <i class="fa-solid fa-phone"></i>
+      <a href="tel:+916377308219">+91 63773 08219</a>
+    </div>
+    <div class="footer-contact-item">
+      <i class="fa-brands fa-whatsapp"></i>
+      <a href="https://wa.me/916377308219" target="_blank">WhatsApp Us</a>
+    </div>
+    <div class="footer-contact-item">
+      <i class="fa-brands fa-instagram"></i>
+      <a href="https://instagram.com/tuftcafe" target="_blank">@tuftcafe</a>
+    </div>
+  </div>
+</div>
+<div class="footer-social-row">
+  <h3>Follow Us</h3>
+  <div class="footer-social-icons">
+    <a href="https://www.instagram.com/direct/t/17843814135402203/" target="_blank" class="footer-icon">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+    <a href="https://in.pinterest.com/tuftcafe/" target="_blank" class="footer-icon">
+      <i class="fa-brands fa-pinterest-p"></i>
+    </a>
+    <a href="mailto:tuftcafe@gmail.com" class="footer-icon">
+      <i class="fa-solid fa-envelope"></i>
+    </a>
+  </div>
+</div>
+<div class="footer-bottom">
+  &copy; 2026 TuftCafe. All rights reserved.
+</div>
+</footer>
+
+<!-- ================= LIGHTBOX ================= -->
+<div class="cp-lightbox" id="cpLightbox">
+  <button class="cp-lb-close" id="cpLbClose">&#x2715;</button>
+  <div class="cp-lb-inner">
+    <div class="cp-lb-media-wrap" id="cpLbMediaWrap">
+      <img class="cp-lb-img" id="cpLbImg" src="" alt="">
+      <button class="cp-lb-arrow cp-lb-prev" id="cpLbPrev">&#8592;</button>
+      <button class="cp-lb-arrow cp-lb-next" id="cpLbNext">&#8594;</button>
+    </div>
+    <div class="cp-lb-info">
+      <span class="cp-lb-badge">Custom Demand</span>
+      <h2 class="cp-lb-title" id="cpLbTitle"></h2>
+      <p class="cp-lb-counter" id="cpLbCounter"></p>
+      <div class="cp-lb-thumbs" id="cpLbThumbs"></div>
+      <p class="cp-lb-desc">This rug was handcrafted based on a customer's personal request. Every stitch is made with care and precision using high-quality yarn. Want something just like this — or totally unique? Let's make yours!</p>
+      <a href="https://wa.me/916377308219" class="cp-lb-cta" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i> Order This Style
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="js/products.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  // ── Build product list from PRODUCTS ──
+  const customProducts = Object.entries(window.PRODUCTS)
+    .filter(([, p]) => p.customDemand)
+    .map(([id, p]) => ({
+      id,
+      name: p.name,
+      images: p.images && p.images.length ? p.images : (p.image ? [p.image] : [])
+    }));
+
+  const grid = document.getElementById('cpGrid');
+
+  customProducts.forEach((product, idx) => {
+    const mainImg = product.images[0] || '';
+    const card = document.createElement('div');
+    card.className = 'cp-card';
+    card.innerHTML = `
+      <span class="cp-card-badge">Custom</span>
+      <div class="cp-card-img-wrap">
+        <img class="cp-card-img" src="${mainImg}" alt="${product.name}" loading="lazy">
+      </div>
+      <div class="cp-card-body">
+        <h3>${product.name}</h3>
+        <p>Tap to view this custom design</p>
+      </div>
+    `;
+    card.addEventListener('click', () => openCpLightbox(idx, 0));
+    grid.appendChild(card);
+  });
+
+  // ── Lightbox logic ──
+  let _cpIdx = 0;   // which product
+  let _imgIdx = 0;  // which image in product
+
+  function openCpLightbox(productIdx, imgIdx) {
+    _cpIdx = productIdx;
+    _imgIdx = imgIdx || 0;
+    renderCpLb();
+    document.getElementById('cpLightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function renderCpLb() {
+    const product = customProducts[_cpIdx];
+    const imgs = product.images;
+    document.getElementById('cpLbTitle').textContent = product.name;
+    document.getElementById('cpLbImg').src = imgs[_imgIdx] || '';
+    document.getElementById('cpLbImg').alt = product.name;
+    document.getElementById('cpLbCounter').textContent =
+      imgs.length > 1 ? `Photo ${_imgIdx + 1} of ${imgs.length}` : '';
+
+    // Thumbnails
+    const thumbsEl = document.getElementById('cpLbThumbs');
+    thumbsEl.innerHTML = '';
+    imgs.forEach((src, i) => {
+      const t = document.createElement('img');
+      t.src = src;
+      t.alt = product.name;
+      t.className = 'cp-lb-thumb' + (i === _imgIdx ? ' active' : '');
+      t.addEventListener('click', () => { _imgIdx = i; renderCpLb(); });
+      thumbsEl.appendChild(t);
+    });
+
+    // Show/hide arrows
+    const showArrows = imgs.length > 1;
+    document.getElementById('cpLbPrev').style.display = showArrows ? 'flex' : 'none';
+    document.getElementById('cpLbNext').style.display = showArrows ? 'flex' : 'none';
+  }
+
+  function closeCpLightbox() {
+    document.getElementById('cpLightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('cpLbClose').onclick = closeCpLightbox;
+  document.getElementById('cpLbPrev').onclick = () => {
+    const imgs = customProducts[_cpIdx].images;
+    _imgIdx = (_imgIdx - 1 + imgs.length) % imgs.length;
+    renderCpLb();
+  };
+  document.getElementById('cpLbNext').onclick = () => {
+    const imgs = customProducts[_cpIdx].images;
+    _imgIdx = (_imgIdx + 1) % imgs.length;
+    renderCpLb();
+  };
+
+  document.getElementById('cpLightbox').addEventListener('click', (e) => {
+    if (e.target.id === 'cpLightbox') closeCpLightbox();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    const lb = document.getElementById('cpLightbox');
+    if (!lb.classList.contains('open')) return;
+    const imgs = customProducts[_cpIdx].images;
+    if (e.key === 'ArrowRight') { _imgIdx = (_imgIdx + 1) % imgs.length; renderCpLb(); }
+    if (e.key === 'ArrowLeft') { _imgIdx = (_imgIdx - 1 + imgs.length) % imgs.length; renderCpLb(); }
+    if (e.key === 'Escape') closeCpLightbox();
+  });
+
+});
+</script>
+
+</body>
+</html>

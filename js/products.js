@@ -193,7 +193,7 @@ window.PRODUCTS = {
     category: "floor",
 
     sizes: [
-      "25x17 inches"
+      "19x22 inches"
     
     ],
 
